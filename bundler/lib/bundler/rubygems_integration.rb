@@ -523,7 +523,7 @@ module Bundler
       uri = Bundler.settings.mirror_for(uri)
       fetcher = gem_remote_fetcher
       fetcher.headers = { "X-Gemfile-Source" => spec.remote.original_uri.to_s } if spec.remote.original_uri
-      Bundler::Retry.new("download gem from #{uri}").attempts do
+      Bundler::Retry.new("download gem").attempts do
         fetcher.download(spec, uri, path)
       end
     end
